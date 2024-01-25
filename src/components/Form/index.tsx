@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container, SimpleButton, SimpleText, SimpleText2, TaskInput } from './styled'
 import { Alert } from 'react-native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
 function Form() {
 
@@ -24,6 +25,7 @@ function Form() {
 
     return (
     <Container>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <SimpleText>Qual é a sua tarefa?</SimpleText>
         <TaskInput 
             placeholder='Escreva aqui sua tarefa'
@@ -32,8 +34,8 @@ function Form() {
         <SimpleButton onPress={handleNewTask}>
             <SimpleText2>Criar tarefa!</SimpleText2>
         </SimpleButton>
+        </KeyboardAvoidingView>
     </Container>
-    
   )
 }
 
