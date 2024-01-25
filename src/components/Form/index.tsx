@@ -3,25 +3,21 @@ import { Container, SimpleButton, SimpleText, SimpleText2, TaskInput } from './s
 import { Alert } from 'react-native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 
+import { TaskModel } from '../../databases/model/taskModel';
+import { database } from '../../databases';
+
 function Form() {
 
-    const [task, setTask] = useState('');
+    const [name, setName] = useState('');
+    const [task, setTask] = useState<TaskModel>({} as TaskModel);
 
     async function handleNewTask(){
-
-
-        try
-        {
-            Alert.alert("Tarefa", "Tarefa foi criada!");
-        } 
-        catch
-        {
-            Alert.alert("Tarefa", "Tarefa não foi criada!");
-        }
-        finally
-        {
-            
-        }
+        await database.write(async () => {
+            await database
+            .get<TaskModel>('task')
+            .create(data => {data.name=name})
+        })
+        Alert.alert("Criado!");
     }
 
     return (
@@ -31,7 +27,9 @@ function Form() {
         <TaskInput 
             placeholder='Escreva aqui sua tarefa'
             placeholderTextColor={'gray'}
-            onChangeText={setTask}/>
+            onChangeText={setName}
+            value={name}
+            />
         <SimpleButton onPress={handleNewTask}>
             <SimpleText2>Criar tarefa!</SimpleText2>
         </SimpleButton>
