@@ -9,6 +9,7 @@ function Form() {
 
     async function handleNewTask(){
 
+
         try
         {
             Alert.alert("Tarefa", "Tarefa foi criada!");
