@@ -6,15 +6,16 @@ import Formu from '../screens/Formu';
 
 function Routes() {
 
-  const Stack = createStackNavigator();
+  const { Navigator, Screen } = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator 
-      initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-        <Stack.Screen name="Formu" component={Formu}/>
-      </Stack.Navigator>
+      <Navigator 
+      initialRouteName="home"
+      >
+        <Screen name='home' component={Home} options={{headerShown: false}}/>
+        <Screen name='formu' component={Formu}/>
+      </Navigator>
     </NavigationContainer>
   )
 }
