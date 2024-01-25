@@ -12,8 +12,9 @@ function Routes() {
     <NavigationContainer>
       <Navigator 
       initialRouteName="home"
+      screenOptions={{headerShown: false}}
       >
-        <Screen name='home' component={Home} options={{headerShown: false}}/>
+        <Screen name='home' component={Home}/>
         <Screen name='formu' component={Formu}/>
       </Navigator>
     </NavigationContainer>
