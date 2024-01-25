@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, SimpleButton, SimpleText, SimpleText2, TaskInput } from './styled'
 import { Alert } from 'react-native';
 
-function Formu() {
+function Form() {
 
     const [task, setTask] = useState('');
 
@@ -37,4 +37,4 @@ function Formu() {
   )
 }
 
-export default Formu
+export default Form
