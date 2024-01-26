@@ -12,6 +12,23 @@ function Card() {
   const navigation = useNavigation();
 
   const [tasks, setTasks] = useState<TaskModel[]>();
+  const [task, setTask] = useState<TaskModel>({} as TaskModel);
+
+  async function handleRemove(item: TaskModel) {
+    await database.write(async () => {
+      await item.destroyPermanently();
+    });
+
+    fetchData();
+  }
+
+  async function handleEdit(item: TaskModel) {
+    await database.write(async () => {
+      await item.destroyPermanently();
+    });
+
+    fetchData();
+  }
 
   async function fetchData() {
       const taskCollection = database.get<TaskModel>('task');
@@ -32,7 +49,9 @@ function Card() {
             data={tasks}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
-              <Task data={item} onEdit={() => {}} onRemove={() => {}} />
+              <Task data={item} 
+              onEdit={() => {}} 
+              onRemove={() => handleRemove(item)} />
             )}
           />
         ) 

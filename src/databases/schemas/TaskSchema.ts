@@ -10,6 +10,6 @@ export const taskShema = tableSchema({
         {
             name: 'type',
             type: 'string'
-        }
+        },
     ]
 });

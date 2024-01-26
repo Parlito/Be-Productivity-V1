@@ -9,8 +9,7 @@ import { database } from '../../databases';
 function Form() {
 
     const [name, setName] = useState('');
-    const [task, setTask] = useState<TaskModel>({} as TaskModel);
-
+    
     async function handleNewTask(){
         await database.write(async () => {
             await database

@@ -3,14 +3,14 @@ import { Entypo } from '@expo/vector-icons';
 
 import { Container, Icon, Name, Options, Option } from './styles';
 
-export type SkillProps = {
+export type TasksProps = {
   id: string;
   name: string;
   type: string;
 }
 
 type Props = {
-  data: SkillProps;
+  data: TasksProps;
   onRemove: () => void;
   onEdit: () => void;
 }
@@ -18,21 +18,12 @@ type Props = {
 export function Task({ data, onRemove, onEdit }: Props) {
   return (
     <Container>
-      <Icon type={data.type}>
-        <Entypo
-          name={data.type === "soft" ? "user" : "tools"}
-          color="#FFF"
-          size={20}
-        />
-      </Icon>
-
       <Name>{data.name}</Name>
-
       <Options>
         <Option onPress={onEdit}>
           <Entypo
             name="edit"
-            color="#FEDC43"
+            color="#005B41"
             size={20}
           />
         </Option>
